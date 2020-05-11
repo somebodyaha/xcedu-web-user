@@ -50,7 +50,7 @@ export default {
       this.$refs.form.validate().then(vaild => {
         if (vaild) {
           this.loginAction(this.form).then(() => {
-            this.navigateToUrl('/space', {}, 'location')
+            this.navigateToUrl('/space')
           }).catch(() => {
             this.$message.error('用户名或密码不正确！')
           })
