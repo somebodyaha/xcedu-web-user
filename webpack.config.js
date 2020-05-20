@@ -111,6 +111,7 @@ const baseConf = (env = 'production') => ({
       use: [{
         loader: 'eslint-loader',
         options: {
+          fix: true,
           failOnError: true,
           failOnWarning: true,
           cache: resolve('.cache/eslint')
