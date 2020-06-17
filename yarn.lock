@@ -1410,6 +1410,11 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
+"@xcedu/web-share@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@xcedu/web-share/-/web-share-1.0.1.tgz#7bc4e84cab544ea38e29c40d7f60d3f8cbfd4169"
+  integrity sha512-OHttwr3BSFYDLvz9QlTNu6bht3UcRanSCbo9y6oW37hK5M9Py6oWsU8Z7MDJX5pMy55usEPqo69b3X+ZEFrjYA==
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
