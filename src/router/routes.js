@@ -4,6 +4,7 @@ import UserLogin from '@page/login/index.vue'
 import ChangePwd from '@page/password/change.vue'
 import PwdVerify from '@page/password/verify.vue'
 import PwdReset from '@page/password/reset.vue'
+import SkinSet from '@page/skin/set.vue'
 
 const NoneSignPages = {
   path: '/user',
@@ -30,4 +31,10 @@ const ChnagePassword = {
   component: ChangePwd
 }
 
-export default [NoneSignPages, ChnagePassword]
+const ChangeSkin = {
+  name: 'change-skin',
+  path: '/user/change/skin',
+  component: SkinSet
+}
+
+export default [NoneSignPages, ChnagePassword, ChangeSkin]

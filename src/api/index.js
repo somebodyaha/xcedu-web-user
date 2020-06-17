@@ -5,7 +5,7 @@ export function getSiteConfig () {
 }
 
 export function login (form) {
-  return request.post('/sys/login', form)
+  return request.post('/sysUserLogin/login', form)
 }
 
 export function sendVerifyCode (phone) {
