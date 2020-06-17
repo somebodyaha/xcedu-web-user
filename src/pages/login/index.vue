@@ -1,7 +1,7 @@
 <template>
   <el-form key="loginForm" ref="form" :model="form" :rules="rules" @submit.native.prevent="login">
     <el-form-item prop="account">
-      <el-input v-model="form.account" prefix-icon="el-icon-user" placeholder="用户名" />
+      <el-input v-model="form.username" prefix-icon="el-icon-user" placeholder="用户名" />
     </el-form-item>
     <el-form-item prop="password">
       <el-input v-model="form.password" prefix-icon="el-icon-unlock" show-password placeholder="密码" />
@@ -17,16 +17,17 @@
 </template>
 
 <script>
+import { getToken } from '@/utils/token'
 const { mapActions } = Vuex
 
 const form = {
-  account: '',
+  username: '',
   password: '',
   remember: false
 }
 
 const rules = {
-  account: [{
+  username: [{
     required: true,
     message: '用户名不能为空！'
   }],
@@ -42,7 +43,12 @@ export default {
   data () {
     return { form, rules }
   },
-
+  created () {
+    if (getToken()) {
+      // 进入登陆页 如果有token
+      this.$router.push('/mfs-email')
+    }
+  },
   methods: {
     ...mapActions('user', { loginAction: 'login' }),
 
@@ -50,7 +56,7 @@ export default {
       this.$refs.form.validate().then(vaild => {
         if (vaild) {
           this.loginAction(this.form).then(() => {
-            this.navigateToUrl('/space')
+            this.navigateToUrl('/mfs-email', {}, 'location') 
           }).catch(() => {
             this.$message.error('用户名或密码不正确！')
           })

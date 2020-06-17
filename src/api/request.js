@@ -1,5 +1,5 @@
-import { getToken } from '@/utils/token'
-
+import { getToken, setToken, getRefreshToken, setRefreshToken } from '@/utils/token'
+import router from '@router/index'
 // create an axios instance
 const instance = axios.create({
   /**
@@ -28,7 +28,7 @@ const instance = axios.create({
      */
   transformResponse: [function transformResponse (data) {
     // Do whatever you want to transform the data
-    return data
+    return data.data
   }],
 
   /**
@@ -39,11 +39,39 @@ const instance = axios.create({
 
 instance.interceptors.request.use(config => {
   const token = getToken()
-
   if (token) {
-    config.headers.Authorization = token
+    config.headers.Authorization = `Bearer ${token}`
   }
   return config
+})
+
+instance.interceptors.response.use(response => {
+  if (response.data) {
+    return response.data
+  }
+}, error => {
+  if (error.response.status === 401) {
+    const res = error.request.response
+    if (res.code === 403) {
+      // toke 过期 获取refresh token 重新请求token
+      const refreshToken = getRefreshToken()
+      return instance.post('/sys/refreshToken', { refreshToken: refreshToken }).then(res => {
+        setToken(res.access_token)
+        setRefreshToken(res.refresh_token)
+        const tokenNew = getToken()
+        error.config.__isRetryRequest = true
+        error.config.headers.Authorization = `Bearer ${tokenNew}`
+        return instance.request(error.config)
+      })
+    } else {
+      // 认证失败 或者token非法 跳回登录页
+      setToken('')
+      setRefreshToken('')
+      router.repalce('/user/login')
+    }
+  }
+  const reason = error.message
+  return Promise.reject(reason)
 })
 
 export default instance

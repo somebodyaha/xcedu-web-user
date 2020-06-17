@@ -1,14 +1,11 @@
 import request from './request'
 
 export function getSiteConfig () {
-  return request.get('/sites/current/config').then(({ data }) => data.siteConfig)
+  return request.get('/api-sites/sites').then(({ data }) => data.siteConfig)
 }
 
-export function login (post) {
-  return request.post('/user/login', post).then(({ data }) => {
-    const { token, user, profile } = data
-    return { token, user, profile }
-  })
+export function login (form) {
+  return request.post('/sysUserLogin/login', form)
 }
 
 export function sendVerifyCode (phone) {

@@ -1,9 +1,10 @@
 import { login, sendVerifyCode, verifyUser, resetPwd } from '@/api'
 
-import { setToken } from '@/utils/token'
+import { setToken, setRefreshToken } from '@/utils/token'
 
 const state = {
   token: '',
+  refreshToken: '',
   currentUser: {
     id: '',
     account: '',
@@ -31,16 +32,21 @@ const mutations = {
   },
   setStatus (state, payload = false) {
     state.loaded = payload
+  },
+  setRefreshToken (state, refreshToken) {
+    setRefreshToken(refreshToken)
+    state.refreshToken = refreshToken
   }
 }
 
 const actions = {
   login ({ commit }, post) {
     return login(post).then(data => {
-      commit('setToken', data.token)
+      commit('setToken', data.access_token)
       commit('setProfile', data.profile)
       commit('setUser', data.user)
       commit('setStatus', true)
+      commit('setRefreshToken', data.refresh_token)
       return data
     })
   },
