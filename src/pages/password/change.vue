@@ -16,7 +16,7 @@
                 <el-input v-model="form.comfirmPassWord" type="password" />
               </el-form-item>
               <el-form-item size="medium" class="form-btn-groups">
-                <el-button type="primary" @click="onSubmit">保存</el-button>
+                <el-button type="primary">保存</el-button>
                 <el-button>重置</el-button>
               </el-form-item>
             </el-form>

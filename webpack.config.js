@@ -276,6 +276,15 @@ const baseConf = (env = 'production') => ({
           preferPathResolver: 'webpack'
         }
       }]
+    },{
+      test: /\.(png|jpe?g|gif|webp)(\?.*)?$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 1024,
+          esModule: false
+        }
+      }]
     }]
   },
   plugins: [
