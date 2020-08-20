@@ -1443,10 +1443,10 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@xcedu/web-share@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@xcedu/web-share/-/web-share-1.0.1.tgz#7bc4e84cab544ea38e29c40d7f60d3f8cbfd4169"
-  integrity sha512-OHttwr3BSFYDLvz9QlTNu6bht3UcRanSCbo9y6oW37hK5M9Py6oWsU8Z7MDJX5pMy55usEPqo69b3X+ZEFrjYA==
+"@xcedu/web-share@^1.0.16":
+  version "1.0.16"
+  resolved "https://registry.npm.taobao.org/@xcedu/web-share/download/@xcedu/web-share-1.0.16.tgz?cache=0&sync_timestamp=1597891319806&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40xcedu%2Fweb-share%2Fdownload%2F%40xcedu%2Fweb-share-1.0.16.tgz#64fb31696be733df71d101f6e88a3d590199fff5"
+  integrity sha1-ZPsxaWvnM99x0QH26Io9WQGZ//U=
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"

@@ -88,9 +88,9 @@ const baseConf = (env = 'production') => ({
       '.wasm'
     ]
   },
-  // externals: {
+  externals: {
   //   vue: 'Vue',
-  //   vuex: 'Vuex',
+    vuex: 'Vuex',
   //   'vue-router': 'VueRouter',
   //   axios: 'axios',
   //   'element-ui': 'ELEMENT',
@@ -100,7 +100,8 @@ const baseConf = (env = 'production') => ({
   //   'systemjs-webpack-interop': 'SystemjsWebapckInterop',
   //   'vuex-router-sync': 'VuexRouterSync',
   //   nprogress: 'NProgress'
-  // },
+    'xc-share': 'XcShare'
+  },
   module: {
     rules: [{
       enforce: 'pre',
@@ -282,7 +283,8 @@ const baseConf = (env = 'production') => ({
         loader: 'url-loader',
         options: {
           limit: 1024,
-          esModule: false
+          esModule: false,
+          publicPath: env !== 'production' ? `${devEnvConfig.DEV_SERVER_PROROCOL}://${devEnvConfig.DEV_SERVER_HOST_NAME}:${devEnvConfig.DEV_SERVER_PORT}` : prodEnvConfig.WEB_PUBLIC_PATH
         }
       }]
     }]

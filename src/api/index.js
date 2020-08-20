@@ -1,21 +1,26 @@
-import request from './request'
+import { axios } from 'xc-share'
 
 export function getSiteConfig () {
-  return request.get('/api-sites/sites').then(({ data }) => data.siteConfig)
+  return axios.get('/api-sites/sites').then(({ data }) => data.siteConfig)
 }
 
 export function login (form) {
-  return request.post('/sysUserLogin/login', form)
+  return axios.post('/sysUserLogin/login', form)
 }
 
 export function sendVerifyCode (phone) {
-  return request.post('/send/verify/code', { phone })
+  return axios.post('/send/verify/code', { phone })
 }
 
 export function verifyUser (post) {
-  return request.post('/verify/user', post).then(({ data }) => data)
+  return axios.post('/verify/user', post).then(({ data }) => data)
 }
 
 export function resetPwd (post) {
-  return request.post('/user/password/reset', post)
+  return axios.post('/user/password/reset', post)
+}
+
+// 主题设置
+export function skinSubmit (skin) {
+  return axios.put('/api-base/users/info', skin)
 }

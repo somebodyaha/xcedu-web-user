@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { getToken } from '@/utils/token'
+import { token } from 'xc-share'
 const { mapActions } = Vuex
 
 const form = {
@@ -44,7 +44,7 @@ export default {
     return { form, rules }
   },
   created () {
-    if (getToken()) {
+    if (token.getToken()) {
       // 进入登陆页 如果有token
       this.$router.push('/mfs-email')
     }

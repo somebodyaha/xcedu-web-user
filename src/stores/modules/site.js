@@ -1,4 +1,4 @@
-// import { getSiteConfig } from '@/api'
+import { getSiteConfig } from '@/api'
 
 const state = {
   config: {
@@ -24,10 +24,10 @@ const actions = {
     if ((window.singleSpaNavigate && window.singleSpaVue) || store.state.loaded) {
       return store.state.config
     }
-    // return getSiteConfig().then(config => {
-    //   store.commit('initialize', config)
-    //   return config
-    // })
+    return getSiteConfig().then(config => {
+      store.commit('initialize', config)
+      return config
+    })
   }
 }
 
