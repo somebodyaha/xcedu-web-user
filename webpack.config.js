@@ -90,7 +90,7 @@ const baseConf = (env = 'production') => ({
   },
   externals: {
   //   vue: 'Vue',
-    vuex: 'Vuex',
+    // vuex: 'Vuex',
   //   'vue-router': 'VueRouter',
   //   axios: 'axios',
   //   'element-ui': 'ELEMENT',
