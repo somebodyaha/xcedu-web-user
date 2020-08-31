@@ -62,7 +62,8 @@ const baseConf = (env = 'production') => ({
   output: {
     path: resolve('dist'),
     publicPath: (env === 'development' ? devEnvConfig : prodEnvConfig).WEB_PUBLIC_PATH,
-    libraryTarget: 'umd'
+    library: 'singleVue',
+    libraryTarget: 'window'
   },
   resolve: {
     alias: {
