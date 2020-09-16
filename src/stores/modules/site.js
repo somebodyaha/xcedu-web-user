@@ -20,8 +20,8 @@ const mutations = {
 
 const actions = {
   loadConfig (store) {
-    /* eslint-disable no-console */
-    if ((window.singleSpaNavigate && window.singleSpaVue) || store.state.loaded) {
+    // if ((window.singleSpaNavigate && window.singleSpaVue) || store.state.loaded) {
+    if (store.state.loaded) {
       return store.state.config
     }
     return getSiteConfig().then(config => {
